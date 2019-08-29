@@ -49,10 +49,32 @@ const validate = values => {
 const renderError = ({ meta: { touched, error } }) => touched && error ?
     <span>{error}</span> : false
 
-const WizardFormThirdPage = (props) => {
+const imageIsRequired = value => (!value ? "Required" : undefined);
+
+class WizardFormThirdPage extends Component {
+   
+constructor(props) {
+    super(props);
+    this.state = {
+        progressTracker: 1,
+        state : { imageFile: [] }
+    };
     const { handleSubmit, previousPage } = props
+} 
+    handleFormSubmit = formProps => {
+        const fd = new FormData();
+        fd.append("imageFile", formProps.imageToUpload[0]);
+        alert(JSON.stringify(formProps, null, 4));
+        // append any additional Redux form fields
+        // create an AJAX request here with the created formData
+    };
+
+    handleOnDrop = newImageFile => this.setState({ imageFile: newImageFile });
+
+    resetForm = () => this.setState({ imageFile: [] }, () => this.props.reset());
+render() {
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
 
             <div>
                 <label>Document</label>
@@ -69,12 +91,20 @@ const WizardFormThirdPage = (props) => {
                         )}
                     </Dropzone>
                     
-                   
+                    <Field
+                        name="imageToUpload"
+                        component={DropZoneField}
+                        type="file"
+                        imagefile={this.state.imageFile}
+                        handleOnDrop={this.handleOnDrop}
+                        validate={[imageIsRequired]}
+                    />
                 </div>
             </div>
 
         </form>
     )
+  }
 }
 export default reduxForm({
     form: 'wizard', //Form name is same
