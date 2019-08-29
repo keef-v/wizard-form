@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { Provider } from "react-redux";
+import store from "./store";
+import WizardForm from "./components/wizardForm";
+// import "./styles.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  showResults = values =>
+    new Promise(resolve => {
+      setTimeout(() => {
+        // simulate server latency
+        window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`)
+        resolve()
+      }, 500)
+    })
+  render() {
+    return (
+      <Provider store={store}><WizardForm onSubmit={this.showResults}/></Provider>
+    );
+  }
 }
-
 export default App;
