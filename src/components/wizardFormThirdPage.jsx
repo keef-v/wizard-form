@@ -1,6 +1,8 @@
 import React ,{Component} from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { Form,Field, reduxForm } from 'redux-form'
 import  Dropzone from 'react-dropzone'
+import DropZoneField from "../components/dropzoneField"
+
 const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet']
 
 const validate = values => {
@@ -69,7 +71,9 @@ constructor(props) {
         // create an AJAX request here with the created formData
     };
 
-    handleOnDrop = newImageFile => this.setState({ imageFile: newImageFile });
+    handleOnDrop = newImageFile =>  {console.log(newImageFile);  return this.setState({ imageFile: newImageFile });}
+
+    //  handleOnDrop = newImageFile => console.log('test');
 
     resetForm = () => this.setState({ imageFile: [] }, () => this.props.reset());
 render() {
@@ -79,17 +83,7 @@ render() {
             <div>
                 <label>Document</label>
                 <div>
-                    <Field name="file" component='input' type="hidden" />
-                    <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
-                        {({ getRootProps, getInputProps }) => (
-                            <section>
-                                <div {...getRootProps()}>
-                                    <input {...getInputProps()} />
-                                    <p>Drag 'n' drop some files here, or click to select files</p>
-                                </div>
-                            </section>
-                        )}
-                    </Dropzone>
+      
                     
                     <Field
                         name="imageToUpload"
@@ -98,7 +92,9 @@ render() {
                         imagefile={this.state.imageFile}
                         handleOnDrop={this.handleOnDrop}
                         validate={[imageIsRequired]}
+
                     />
+                    <button  type="submit" />
                 </div>
             </div>
 

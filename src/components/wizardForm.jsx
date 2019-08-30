@@ -4,6 +4,7 @@ import WizardFormFirstPage from "./wizardFormFirstPage"
 import WizardFormSecondPage from "./wizardFormSecondPage"
 import WizardFormThirdPage from "./wizardFormThirdPage"
 import Dropzone  from "react-dropzone";
+import './styles.css';
 class WizardForm extends Component {
     constructor(props) {
         super(props);
