@@ -71,7 +71,17 @@ constructor(props) {
         // create an AJAX request here with the created formData
     };
 
-    handleOnDrop = newImageFile =>  {console.log(newImageFile);  return this.setState({ imageFile: newImageFile });}
+    handleOnDrop = newImageFile =>  {// console.log(newImageFile);  
+       let  reader = new FileReader();
+        console.log(newImageFile);
+        // reader.onloadend = function (event) {
+        //     console.log(newImageFile);
+        //     // filename is in file.name
+        //     // ... do something here
+        // }
+        
+        // reader.readAsArrayBuffer  (newImageFile);
+        return this.setState({ imageFile: newImageFile });}
 
     //  handleOnDrop = newImageFile => console.log('test');
 

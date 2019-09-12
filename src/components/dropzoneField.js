@@ -19,18 +19,11 @@ const DropZoneField = ({
                 onDrop={handleOnDrop}
                 onChange={file => input.onChange(file)}
             >
-                {({ getRootProps, getInputProps }) => (
-                    <section>
-                        <div {...getRootProps()} className='preview-container'>
-                            <input {...getInputProps()} />
-                            {imagefile && imagefile.length > 0 ? (
-                                <ImagePreview imagefile={imagefile} />
-                            ) : (
-                                    <Placeholder error={error} touched={touched} />
-                                )}
-                        </div>
-                    </section>
-                )}
+                {()=>{return imagefile && imagefile.length > 0 ? (
+                    <ImagePreview imagefile={imagefile} />
+                ) : (
+                        <Placeholder error={error} touched={touched} />
+                    )}}
             </DropZone>
             {touched && error && <ShowError error={error} />}
         </div>

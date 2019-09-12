@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const ImagePreview = ({ imagefile }) =>
-    imagefile.map(({ name, path, size }) => (
+    imagefile.map(({ name, preview, size }) => (
         <div key={name} className="render-preview">
             <div className="image-container">
-                <img src={path} alt={name} />
+                <img src={preview} alt={name} />
             </div>
             <div className="details">
                 {name} - {(size / 1024000).toFixed(2)}MB
