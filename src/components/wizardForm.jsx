@@ -29,7 +29,7 @@ class WizardForm extends Component {
         const { page ,progressTracker} = this.state;
 
         return (
-            <div><ProgressTracker currentpage={page}/>
+            <div className='app-container' ><ProgressTracker currentpage={page}/>
 
                  
                  
@@ -77,9 +77,9 @@ class ProgressTracker extends Component {
     render() {
         var stepsCompleted=[];
         const { progressTracker } = this.state;
-        for (let i = 0; i <progressTracker; i++) stepsCompleted.push(<span>{i+1},</span>);
+        for (let i = 1; i <progressTracker; i++) stepsCompleted.push(<span>{i},</span>);
         
-        return <p>Progress: {stepsCompleted} </p>
+        return <p>You have completed the following sections: {stepsCompleted} </p>
     }
 
 }

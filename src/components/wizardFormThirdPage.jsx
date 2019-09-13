@@ -62,6 +62,8 @@ constructor(props) {
         state : { imageFile: [] }
     };
     const { handleSubmit, previousPage } = props
+    this.handleSubmit=handleSubmit;
+    this.previousPage=previousPage;
 } 
     handleFormSubmit = formProps => {
         const fd = new FormData();
@@ -89,9 +91,10 @@ constructor(props) {
 render() {
     return (
         <form onSubmit={this.handleSubmit}>
+            <p className='section'>Section 3</p>
 
             <div>
-                <label>Document</label>
+                <label>Upload your documents here</label>
                 <div>
       
                     
@@ -104,7 +107,10 @@ render() {
                         validate={[imageIsRequired]}
 
                     />
-                    <button  type="submit" />
+                    <div className='form-buttons'>
+                        <button type="button" className="previous a-btn" onClick={this.previousPage}>Previous</button>
+                        <button type="submit" className='a-btn--filled'>Ready to submit</button>
+                    </div>
                 </div>
             </div>
 

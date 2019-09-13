@@ -44,6 +44,7 @@ const WizardFormSecondPage = (props) => {
     const { handleSubmit, previousPage } = props
     return (
         <form onSubmit={handleSubmit}>
+            <p className='section'>Section 2</p>
             <Field name="email" type="email" component={renderField} label="Email" />
             <div>
                 <label>Sex</label>
@@ -53,9 +54,9 @@ const WizardFormSecondPage = (props) => {
                     <Field name="sex" component={renderError} />
                 </div>
             </div>
-            <div>
-                <button type="button" className="previous" onClick={previousPage}>Previous</button>
-                <button type="submit" className="next">Next</button>
+            <div className='form-buttons'>
+                <button type="button" className="previous a-btn" onClick={previousPage}>Previous</button>
+                <button type="submit" className="next a-btn">Next</button>
             </div>
         </form>
     )

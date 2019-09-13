@@ -39,10 +39,11 @@ const WizardFormFirstPage = (props) => {
     const { handleSubmit } = props
     return (
         <form onSubmit={handleSubmit}>
+            <p className='section'>Section 1</p>
             <Field name="firstName" type="text" component={renderField} label="First Name" />
             <Field name="lastName" type="text" component={renderField} label="Last Name" />
-            <div>
-                <button type="submit" className="next">Next</button>
+            <div className='form-buttons'>
+                <button type="submit" className="next a-btn">Next</button>
             </div>
         </form>
     )

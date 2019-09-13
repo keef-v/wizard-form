@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Provider } from "react-redux";
 import store from "./store";
 import WizardForm from "./components/wizardForm";
-// import "./styles.css";
+import "./styles.css";
 
 class App extends Component {
 
