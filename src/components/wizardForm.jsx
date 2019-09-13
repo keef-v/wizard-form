@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import WizardFormIntro from "./wizardFormIntro"
 import WizardFormFirstPage from "./wizardFormFirstPage"
 import WizardFormSecondPage from "./wizardFormSecondPage"
 import WizardFormThirdPage from "./wizardFormThirdPage"
@@ -11,7 +12,7 @@ class WizardForm extends Component {
         this.nextPage = this.nextPage.bind(this);
         this.previousPage = this.previousPage.bind(this);
         this.state = {
-            page: 1,
+            page: 0,
             progressTracker:1
         };
     } 
@@ -29,9 +30,10 @@ class WizardForm extends Component {
         const { page ,progressTracker} = this.state;
 
         return (
-            <div className='app-container' ><ProgressTracker currentpage={page}/>
+            <div className='app-container' >
+                {page !==0 && <ProgressTracker currentpage={page}/>}
 
-                 
+                {page === 0 && <WizardFormIntro onSubmit={this.nextPage} />}
                  
                 {page === 1 && <WizardFormFirstPage onSubmit={this.nextPage} />}
                 {page === 2 && (
@@ -79,7 +81,10 @@ class ProgressTracker extends Component {
         const { progressTracker } = this.state;
         for (let i = 1; i <progressTracker; i++) stepsCompleted.push(<span>{i},</span>);
         
-        return <p>You have completed the following sections: {stepsCompleted} </p>
+        return <div >
+            <p>You have completed the following sections: {stepsCompleted=== undefined || stepsCompleted.length == 0 && "None"} {stepsCompleted} </p>
+               
+                </div>
     }
 
 }

@@ -49,7 +49,7 @@ const validate = values => {
 // }
 
 const renderError = ({ meta: { touched, error } }) => touched && error ?
-    <span>{error}</span> : false
+    <span className='error'>{error}</span> : false
 
 const imageIsRequired = value => (!value ? "Required" : undefined);
 
